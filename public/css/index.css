@@ -1,0 +1,113 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #f8fafa;
+  --secondary-color: #4b9771;
+  --accent-color: #214432;
+  --text-light: #e5f4eb;
+  --text-muted: #669078;
+  --text-dark: #244f39;
+  --padding-lg: 1rem;
+  --padding-md: 0.5rem;
+  --padding-sm: 0.25rem;
+  --box-shadow-lg: 0 3px 10px rgba(0, 0, 0, 0.1);
+  --box-shadow-md: 0 3px 8px rgba(0, 0, 0, 0.1);
+  --font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  --fs-h1: clamp(1.75rem, 1.3rem + 2.25vw, 3rem); /* 28px -> 48px */
+  --fs-h2: clamp(1.5rem, 1.2rem + 1.5vw, 2.25rem); /* 24px -> 36px */
+  --fs-h3: clamp(1.25rem, 1.1rem + 0.75vw, 1.625rem); /* 20px -> 26px */
+  --fs-p: clamp(0.9375rem, 0.9rem + 0.2vw, 1.0625rem); /* 15px -> 17px */
+}
+
+h1 {
+  font-size: var(--fs-h1);
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: var(--fs-h2);
+  line-height: 1.25;
+}
+
+h3 {
+  font-size: var(--fs-h3);
+  line-height: 1.3;
+}
+
+p {
+  font-size: var(--fs-p);
+  line-height: 1.6;
+}
+
+body {
+  background-color: var(--secondary-color);
+  font-family: var(--font-family);
+}
+
+.konten {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* Mengubah stretch menjadi center */
+  padding: calc(
+    var(--padding-lg) + 16px
+  ); /* Memberi jarak aman di layar kecil */
+}
+
+.konten .konten__form {
+  width: 100%; /* Membuat form bertumbuh mengikuti lebar layar */
+  max-width: 400px; /* Menghentikan pertumbuhan form di angka 400px */
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  border-radius: 12px;
+  color: var(--text-dark);
+  padding: var(--padding-lg);
+  background-color: var(--primary-color);
+  border: 1px solid var(--accent-color);
+  box-shadow: var(--box-shadow-lg);
+  & .form__figure {
+    color: var(--text-muted);
+  }
+  & label {
+    display: block;
+    & #username,
+    #password {
+      margin-top: 0.2rem;
+      padding: var(--padding-md);
+      display: block;
+      width: 100%;
+      border-radius: 8px;
+      border: 1px inset var(--accent-color);
+      &:focus {
+        outline-color: var(--secondary-color);
+      }
+    }
+  }
+  & .form__submit {
+    border-radius: 8px;
+    border: 1px solid var(--accent-color);
+    background-color: var(--secondary-color);
+    color: var(--text-light);
+    padding: var(--padding-md);
+    &:active {
+      background-color: var(--accent-color);
+    }
+  }
+}
+
+#show-password-label {
+  display: flex;
+  gap: 0.5rem;
+}
+.display {
+  text-align: center;
+  color: hwb(0 55% 11%);
+}

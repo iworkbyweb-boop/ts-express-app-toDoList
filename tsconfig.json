@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    /* Bahasa dan Lingkungan */
+    "target": "es2022",                       /* Menentukan versi JavaScript hasil kompilasi */
+    "module": "NodeNext",                     /* Sistem modul untuk Node.js (CommonJS) */
+    "lib": ["es2022"],                        /* Pustaka bawaan JavaScript yang diizinkan */
+
+    /* Pengaturan Direktori (Output & Input) */
+    "rootDir": "./src",                       /* Folder tempat Anda menulis kode TypeScript (.ts) */
+    "outDir": "./dist",                       /* Folder hasil kompilasi ke JavaScript (.js) */
+    "removeComments": true,                   /* Menghapus komentar dari file hasil build untuk menghemat ukuran */
+    "sourceMap": true,                        /* Membuat file map untuk membantu debugging error */
+
+    /* Pemeriksaan Tipe (Strictness) - Sangat Direkomendasikan */
+    "strict": true,                           /* Mengaktifkan seluruh aturan pemeriksaan tipe yang ketat */
+    "noImplicitAny": true,                    /* Mencegah variabel memiliki tipe 'any' secara tersembunyi */
+    "strictNullChecks": true,                 /* Pemeriksaan ketat untuk nilai null dan undefined */
+
+    /* Kompatibilitas & Modul */
+    "moduleResolution": "NodeNext",
+    "esModuleInterop": true,                  /* Memungkinkan impor modul CommonJS dengan sintaks ES6 (misal: import express from 'express') */
+    "skipLibCheck": true,                     /* Mengabaikan pengecekan tipe pada node_modules agar proses build lebih cepat */
+    "forceConsistentCasingInFileNames": true  /* Mencegah error akibat salah ketik huruf besar/kecil pada nama file */
+  },
+  "include": ["src/**/*"],                    /* Memberitahu TypeScript file mana saja yang harus dikompilasi */
+  "exclude": ["node_modules", "dist"]         /* Folder yang diabaikan saat kompilasi */
+}

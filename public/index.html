@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/index.css" />
+  </head>
+  <body>
+    <main class="konten">
+      <form class="konten__form">
+        <div class="form__title">
+          <h1 class="form__title">Login</h1>
+          <p class="form__figure">Aplikasi To Do List</p>
+        </div>
+        <label hfor="username">
+          Username
+          <input type="text" id="username" placeholder="Masukkan Username..." />
+        </label>
+        <label for="password">
+          Password
+          <input
+            type="password"
+            id="password"
+            placeholder="Masukkan Password..."
+          />
+        </label>
+        <label for="show-password" id="show-password-label">
+          <input type="checkbox" id="show-password" />
+          <p class="form__title">Lihat Password</p>
+        </label>
+        <button class="form__submit">Login</button>
+        <p class="display"></p>
+      </form>
+    </main>
+    <script>
+      const btnSubmit = document.querySelector(".form__submit");
+      const output = document.querySelector(".display");
+      const showPasswordCheckbox = document.getElementById("show-password");
+      const passwordInput = document.getElementById("password");
+      const usernameInput = document.getElementById("username");
+      const errorClearTextContent = () => {
+        setTimeout(() => {
+          output.textContent = "";
+        }, 1500);
+      };
+      const autentifikasi = async ({ username, password }) => {
+        const url = "/auth";
+        try {
+          const response = await fetch(url, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              username,
+              password,
+            }),
+          });
+          const result = await response.json();
+          output.textContent = result.message;
+          errorClearTextContent();
+          if (!result.success) {
+            return;
+          }
+          setTimeout(() => {
+            window.location.pathname = "/main.html";
+          }, 1000);
+        } catch (err) {
+          output.textContent = `Terjadi Kesalahan: ${err.message}`;
+        }
+      };
+
+      showPasswordCheckbox.addEventListener("change", function () {
+        if (this.checked) {
+          // Jika dicentang, ubah tipe menjadi 'text' agar sandi terlihat
+          passwordInput.type = "text";
+        } else {
+          // Jika tidak dicentang, kembalikan ke 'password' agar disembunyikan
+          passwordInput.type = "password";
+        }
+      });
+
+      btnSubmit.addEventListener("click", (e) => {
+        e.preventDefault();
+        const username = document.getElementById("username");
+        const password = document.getElementById("password");
+        if (!username.value?.trim()) {
+          output.textContent = "Masukkan Username Dengan Benar";
+          errorClearTextContent();
+          return;
+        } else if (!password.value?.trim()) {
+          output.textContent = "Masukkan Password Dengan Benar";
+          errorClearTextContent();
+          return;
+        }
+        autentifikasi({
+          username: username.value.trim(),
+          password: password.value.trim(),
+        });
+        usernameInput.value = "";
+        passwordInput.value = "";
+      });
+    </script>
+  </body>
+</html>

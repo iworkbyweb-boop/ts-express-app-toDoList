@@ -1,0 +1,19 @@
+{
+  "name": "ts-template",
+  "version": "1.0.0",
+  "description": "Folder khusus untuk membuat proyek tanpa internet",
+  "main": "index.js",
+  "scripts": {
+    "test": "node dist/index.js"
+  },
+  "author": "Iworkbyweb-boop",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.6.6",
+    "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "express": "^5.3.0"
+  }
+}

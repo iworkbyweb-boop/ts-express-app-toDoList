@@ -1,0 +1,16 @@
+# Mengabaikan folder tertentu (tambahkan '/' di akhir)
+databases/
+src/
+
+# Mengabaikan folder bawaan sistem/framework yang biasanya besar
+node_modules/
+vendor/
+.venv/
+
+# Mengabaikan file sensitif atau log
+.env
+*.log
+
+# Mengabaikan file sistem operasi (Mac/Windows)
+.DS_Store
+Thumbs.db
